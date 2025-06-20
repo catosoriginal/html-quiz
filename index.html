@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>https://github.com/catosoriginal</title>
+  <style>
+    body {
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      color: #D51AFF;
+      background-color: #CAA6EB;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #7A2BE5;
+      margin-bottom: 20px;
+    }
+
+    .quizdiv {
+      background-color: #ED94FC;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    #QuizQuestion {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 100%;
+      color: white;
+      background-color: blueviolet;
+      border: 2px solid #DC40FF;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      padding: 12px 0;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #B432FF;
+    }
+
+    button:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(220, 64, 255, 0.6);
+    }
+
+    /* Style for Welcome message */
+    .welcome-message {
+      font-size: 1.4rem;
+      color: #333;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    /* Style for the link text at the bottom */
+    .footer-text {
+      font-size: 0.9rem;
+      color: rgba(0, 0, 0, 0.3); /* light and subtle text */
+      margin-top: 30px;
+    }
+
+    .footer-text a {
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.6);
+      transition: color 0.3s ease;
+    }
+
+    .footer-text a:hover {
+      color: #7A2BE5; /* Change color on hover */
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="quizdiv">
+    <h1>Quiz</h1>
+    <p class="welcome-message">Welcome to the quiz! Answer the questions to test your knowledge.</p>
+
+    <p id="QuizQuestion">Question: Not Loaded</p>
+    <button id="AnswerOption1">Answer Option 1</button>
+    <button id="AnswerOption2">Answer Option 2</button>
+    <button id="AnswerOption3">Answer Option 3</button>
+  </div>
+
+  <!-- Footer Text -->
+  <p class="footer-text">
+    <a href="https://github.com/catosoriginal/clicker-html" target="_blank">https://github.com/catosoriginal/clicker-html</a>
+  </p>
+
+  <script>
+    let QuizQuestion = document.getElementById("QuizQuestion")
+    let QuizAnswerOption1 = document.getElementById("AnswerOption1")
+    let QuizAnswerOption2 = document.getElementById("AnswerOption2")
+    let QuizAnswerOption3 = document.getElementById("AnswerOption3")
+
+    const questions = {
+      Question_1: {
+        question: "Which planet is known as the Red Planet?",
+        AnswerOption1: "Earth",
+        AnswerOption2: "Mars",
+        AnswerOption3: "Venus",
+        correct_AnswerOption: 2,
+        AlertMessage_Correct: "Good job!",
+        AlertMessage_UnCorrect: "Uncorrect! Try Again!",
+      },
+      Question_2: {
+        question: "Who wrote the play 'Romeo and Juliet'?",
+        AnswerOption1: "Charles Dickens",
+        AnswerOption2: "William Shakespeare",
+        AnswerOption3: "Bad",
+        correct_AnswerOption: 2,
+        AlertMessage_Correct: "Good job!",
+        AlertMessage_UnCorrect: "Uncorrect! Try Again!",
+      },
+      Question_3: {
+        question: "Which element has the chemical symbol 'O'?",
+        AnswerOption1: "Oxygen",
+        AnswerOption2: "Gold",
+        AnswerOption3: "Silver",
+        correct_AnswerOption: 1,
+        AlertMessage_Correct: "Good job!",
+        AlertMessage_UnCorrect: "Uncorrect! Try Again!",
+      }
+    }
+
+    let QuizQuestionNumber = 0;
+    QuizQuestionNumber += 1;
+    let QuizQuestionNumberMax = 3;
+
+    Question_Now = questions[`Question_${QuizQuestionNumber}`].question
+    Question_Now_CorrectAnswerOption = questions[`Question_${QuizQuestionNumber}`].correct_AnswerOption
+    Question_Now_AnswerOption1 = questions[`Question_${QuizQuestionNumber}`].AnswerOption1
+    Question_Now_AnswerOption2 = questions[`Question_${QuizQuestionNumber}`].AnswerOption2
+    Question_Now_AnswerOption3 = questions[`Question_${QuizQuestionNumber}`].AnswerOption3
+    Question_Now_AlertMessage_Correct = questions[`Question_${QuizQuestionNumber}`].AlertMessage_Correct
+    Question_Now_AlertMessage_UnCorrect = questions[`Question_${QuizQuestionNumber}`].AlertMessage_UnCorrect
+
+    QuizQuestion.textContent = `Question: ${Question_Now} (${QuizQuestionNumber}/${QuizQuestionNumberMax})`
+    QuizAnswerOption1.textContent = Question_Now_AnswerOption1
+    QuizAnswerOption2.textContent = Question_Now_AnswerOption2
+    QuizAnswerOption3.textContent = Question_Now_AnswerOption3
+
+    QuizAnswerOption1.addEventListener("click", function () {
+      continueQuiz(1);
+    })
+    QuizAnswerOption2.addEventListener("click", function () {
+      continueQuiz(2);
+    })
+    QuizAnswerOption3.addEventListener("click", function () {
+      continueQuiz(3);
+    })
+
+    function continueQuiz(answer) {
+      if (answer == Question_Now_CorrectAnswerOption) {
+        if (QuizQuestionNumber == QuizQuestionNumberMax) {
+          alert(`${Question_Now_AlertMessage_Correct}. You passed the quiz! Reload Website to start again!`)
+          
+        } else {
+          alert(Question_Now_AlertMessage_Correct)
+        QuizQuestionNumber += 1;
+        Question_Now = questions[`Question_${QuizQuestionNumber}`].question
+        Question_Now_CorrectAnswerOption = questions[`Question_${QuizQuestionNumber}`].correct_AnswerOption
+        Question_Now_AnswerOption1 = questions[`Question_${QuizQuestionNumber}`].AnswerOption1
+        Question_Now_AnswerOption2 = questions[`Question_${QuizQuestionNumber}`].AnswerOption2
+        Question_Now_AnswerOption3 = questions[`Question_${QuizQuestionNumber}`].AnswerOption3
+        Question_Now_AlertMessage_Correct = questions[`Question_${QuizQuestionNumber}`].AlertMessage_Correct
+        Question_Now_AlertMessage_UnCorrect = questions[`Question_${QuizQuestionNumber}`].AlertMessage_UnCorrect
+
+        QuizQuestion.textContent = `Question: ${Question_Now} (${QuizQuestionNumber}/${QuizQuestionNumberMax})`
+        QuizAnswerOption1.textContent = Question_Now_AnswerOption1
+        QuizAnswerOption2.textContent = Question_Now_AnswerOption2
+        QuizAnswerOption3.textContent = Question_Now_AnswerOption3
+        }
+      } else {
+        alert(Question_Now_AlertMessage_UnCorrect)
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
