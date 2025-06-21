@@ -16,6 +16,6 @@ Clicker is an open-source HTML quiz game designed for quick and fun question-bas
 
 ## Gallery
 
-![Снимок экрана 2025-06-20 203533](https://github.com/user-attachments/assets/fbc87d26-4466-43ed-802c-18ad662f003a)
+<img src="https://github.com/user-attachments/assets/fbc87d26-4466-43ed-802c-18ad662f003a" width="250">
 
 <p>&copy; 2025 <a href="https://github.com/catosoriginal" target="_blank">catosoriginal</a>. All rights reserved.</p>
