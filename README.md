@@ -5,7 +5,7 @@
 
 Clicker is an open-source HTML quiz game designed for quick and fun question-based interaction in the browser. Built with clean and lightweight code for fast performance and easy editing
 
-## Features (From Latest Version)
+## Features
 
 - Custom Questions Limit
 - Custom Alert Message For Correct; Uncorrect
